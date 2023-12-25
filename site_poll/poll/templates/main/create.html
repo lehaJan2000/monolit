@@ -1,0 +1,62 @@
+{% extends "basic.html" %}
+{% load widget_tweaks %}
+
+{% block title %}Create Poll{% endblock %}
+{% block content %}
+        <h4 class="h5 mr-lg-6 p-3 text-center" style="border: solid 1px red; border-radius: 1em; margin-top: 80px">Опросы: <span class="text-info">{{ counter }}</span></h4>
+
+{% block main %}
+<div>
+    <div class="row">
+        <div>
+            <div>
+                <h3 class="h5 mr-lg-6 p-3 text-center " style="border: solid 1px red; border-radius: 1em; margin-top: 80px">Create A New Poll</h3>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div>
+                    <div class="row">
+                        <div>
+                            <div>
+                                <label for="question">Enter Poll Question</label>
+                                {% render_field form.question class="form-control" rows="3" %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div>
+                            <div class="form-group">
+                                <label for="option1">Option 1</label>
+                                {% render_field form.option_one class="form-control" %}
+                            </div>
+                        </div>
+                        <div >
+                            <div class="form-group">
+                                <label for="option2">Option 2</label>
+                                {% render_field form.option_two class="form-control" %}
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label for="option3">Option 3</label>
+                                {% render_field form.option_three class="form-control" %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <hr />
+                        <div>
+                            <button type="submit" class="btn btn-info">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% endblock %}

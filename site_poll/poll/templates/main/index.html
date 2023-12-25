@@ -1,0 +1,40 @@
+{% extends "basic.html" %}
+
+{% load static %}
+{% load bootstrap4 %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+    <h4 class="h5 mr-lg-6 p-3 text-center " style="border: solid 1px red; border-radius: 1em; margin-top: 80px">Опросы: <span class="text-info">{{ counter }}</span></h4>
+    {% block main %}
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="panel panel-default">
+                <div  class="panel-heading">
+                    <h3 class="card-header bg-danger text-white" style="margin-top: 20px">Available Polls</h3>
+                </div>
+                <ul class="list-group">
+                    {% for poll in polls %}
+                    <li class="list-group-item">
+                        <strong>{{ poll.question }}</strong>
+                        <span class="pull-right">
+                            <a href="{% url 'vote' poll.id %}" class="btn btn-info btn-xs">Vote</a> &nbsp;
+                            <a href="{% url 'results' poll.id %}" class="btn btn-default btn-xs">View Results</a> &nbsp;
+                        </span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+{% else %}
+    <div>
+        <h4 class="h5 mr-lg-6 p-3 text-center " style="border: solid 1px red; border-radius: 1em; margin-top: 80px">нужно зарегистрироваться</h4>
+    </div>
+{% endif %}
+
+{% endblock %}

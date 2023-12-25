@@ -1,0 +1,52 @@
+{% extends "basic.html" %}
+{% load static %}
+{% load bootstrap4 %}
+
+
+{% block title %}Results{% endblock %}
+{% block content %}
+    <h4 class="h5 mr-lg-6 p-3 text-center " style="border: solid 1px red; border-radius: 1em; margin-top: 80px">Опросы: <span class="text-info">{{ counter }}</span></h4>
+      <div class="container mt-5">
+    <div class="card mx-auto" style="width: 18rem;">
+        <div class="card-header bg-danger text-white">
+            <h3 class="h5 text-center">Poll Result</h3>
+        </div>
+        <div class="card-body">
+    <h2>{{ poll.question }}</h2>
+    <ul class="list-group">
+      <li class="list-group-item">Option One: {{ poll.option_one }} - {{ option_one_percentage }}%</li>
+      <li class="list-group-item">Option Two: {{ poll.option_two }} - {{ option_two_percentage }}%</li>
+      <li class="list-group-item">Option Three: {{ poll.option_three }} - {{ option_three_percentage }}%</li>
+    </ul>
+    <p class="mt-3">Total Votes: {{ total_votes }}</p>
+    <a href="{% url 'index' %}" class="btn btn-primary mt-3">Return to Polls</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+  </div>
+
+
+
+<!--{% block main %}-->
+<!--<div class="container mt-5">-->
+<!--    <div class="card mx-auto" style="width: 18rem;">-->
+<!--        <div class="card-header bg-danger text-white">-->
+<!--            <h3 class="h5 text-center">Poll Result</h3>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--            <h3 class="card-title">{{ poll.question }}</h3>-->
+<!--            <ul class="list-group list-group-flush">-->
+<!--                <li class="list-group-item">{{ poll.option_one }} &mdash; <strong>{{ poll.option_one_count }}</strong></li>-->
+<!--                <li class="list-group-item">{{ poll.option_two }} &mdash; <strong>{{ poll.option_two_count }}</strong></li>-->
+<!--                <li class="list-group-item">{{ poll.option_three }} &mdash; <strong>{{ poll.option_three_count }}</strong></li>-->
+<!--            </ul>-->
+<!--            <div class="mt-3">-->
+<!--                Total &mdash; <strong>{{ poll.total }}</strong>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--{% endblock %}-->
+{% endblock %}
